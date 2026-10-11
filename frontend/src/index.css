@@ -1,0 +1,245 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg:        #EEF0FB;   /* page background (soft lavender) */
+  --surface:   #F6F7FF;   /* clay card surface */
+  --ink:       #26253F;   /* main text */
+  --ink-soft:  #5E5C80;   /* secondary text */
+  --primary:   #5B50E6;   /* indigo-violet; buttons, active nav */
+  --primary-2: #8B82FF;   /* lighter tint for gradients */
+  --accent:    #FF9F7A;   /* peach highlight */
+  --success:   #2FBF8F;
+  --warning:   #F5B544;
+  --danger:    #EF5D7A;
+  --radius-lg: 28px;      /* cards */
+  --radius-md: 18px;      /* inputs, buttons */
+  --radius-pill: 999px;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: 'Nunito', sans-serif;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Fredoka', sans-serif;
+  letter-spacing: 0.01em;
+}
+
+/* Claymorphic Utility Classes */
+
+.clay {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    10px 10px 24px rgba(120, 110, 190, 0.22),
+    -8px -8px 20px rgba(255, 255, 255, 0.95),
+    inset 2px 2px 5px rgba(255, 255, 255, 0.8),
+    inset -3px -3px 6px rgba(120, 110, 190, 0.08);
+}
+
+.clay-interactive {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    10px 10px 24px rgba(120, 110, 190, 0.22),
+    -8px -8px 20px rgba(255, 255, 255, 0.95),
+    inset 2px 2px 5px rgba(255, 255, 255, 0.8),
+    inset -3px -3px 6px rgba(120, 110, 190, 0.08);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+}
+
+.clay-interactive:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    12px 14px 28px rgba(120, 110, 190, 0.26),
+    -10px -10px 24px rgba(255, 255, 255, 1),
+    inset 2px 2px 5px rgba(255, 255, 255, 0.8),
+    inset -3px -3px 6px rgba(120, 110, 190, 0.08);
+}
+
+.clay-inset {
+  background: #EAECFA;
+  border-radius: var(--radius-md);
+  box-shadow:
+    inset 4px 4px 9px rgba(120, 110, 190, 0.22),
+    inset -4px -4px 9px rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  transition: all 0.2s ease;
+}
+
+.clay-inset:focus-within, .clay-inset:focus {
+  border-color: var(--primary);
+  box-shadow:
+    inset 3px 3px 7px rgba(91, 80, 230, 0.2),
+    inset -3px -3px 7px rgba(255, 255, 255, 0.9),
+    0 0 0 3px rgba(91, 80, 230, 0.2);
+}
+
+.clay-btn {
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  color: #FFFFFF;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  box-shadow:
+    5px 5px 14px rgba(91, 80, 230, 0.35),
+    -3px -3px 8px rgba(255, 255, 255, 0.7),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.4);
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  border: none;
+}
+
+.clay-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow:
+    7px 7px 18px rgba(91, 80, 230, 0.45),
+    -4px -4px 10px rgba(255, 255, 255, 0.8),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.4);
+}
+
+.clay-btn:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow:
+    inset 3px 3px 6px rgba(45, 38, 120, 0.4),
+    inset -3px -3px 6px rgba(139, 130, 255, 0.3);
+}
+
+.clay-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.clay-btn-secondary {
+  background: var(--surface);
+  color: var(--ink);
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  box-shadow:
+    4px 4px 12px rgba(120, 110, 190, 0.18),
+    -4px -4px 10px rgba(255, 255, 255, 0.9),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.8);
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.clay-btn-secondary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background: #FFFFFF;
+  box-shadow:
+    6px 6px 14px rgba(120, 110, 190, 0.22),
+    -5px -5px 12px rgba(255, 255, 255, 1);
+}
+
+.clay-btn-secondary:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow:
+    inset 3px 3px 6px rgba(120, 110, 190, 0.2),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.9);
+}
+
+.clay-btn-secondary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.clay-btn-danger {
+  background: linear-gradient(135deg, #EF5D7A, #FF7B95);
+  color: #FFFFFF;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  box-shadow:
+    5px 5px 14px rgba(239, 93, 122, 0.35),
+    -3px -3px 8px rgba(255, 255, 255, 0.7);
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  border: none;
+}
+
+.clay-btn-danger:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow:
+    7px 7px 18px rgba(239, 93, 122, 0.45);
+}
+
+.clay-btn-danger:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow:
+    inset 3px 3px 6px rgba(160, 30, 60, 0.4);
+}
+
+.clay-btn-ghost {
+  background: transparent;
+  color: var(--ink-soft);
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  border: none;
+}
+
+.clay-btn-ghost:hover:not(:disabled) {
+  background: rgba(91, 80, 230, 0.08);
+  color: var(--primary);
+}
+
+.clay-bubble {
+  border-radius: var(--radius-pill);
+  box-shadow:
+    4px 4px 10px rgba(120, 110, 190, 0.16),
+    -3px -3px 8px rgba(255, 255, 255, 0.9),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.9);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clay-pill {
+  border-radius: var(--radius-pill);
+  box-shadow:
+    3px 3px 8px rgba(120, 110, 190, 0.15),
+    -3px -3px 7px rgba(255, 255, 255, 0.9);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #C4C8E2;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #A6ACD3;
+}
